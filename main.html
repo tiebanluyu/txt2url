@@ -6,7 +6,12 @@
     <body>
         <p>123</p>
         <script>
-             $("p").after("<h5>123</h5>")
+            //$("p").after("<h5>123</h5>");
+            var hash = window.location.hash;
+            var content = hash.substring(1); // 去除第一个字符（即#）
+            console.log(content);
+            content=unescape(content);
+            $("p").after(content);
         </script>
     </body>
 </html>
