@@ -8,6 +8,12 @@
         <script>
             //$("p").after("<h5>123</h5>");
             $("p").hide();
+            var mode=location.search;
+            mode=mode[6];
+            //b base64编码
+            //h html编码
+            //t 纯文本
+            console.log(mode);
             var hash = window.location.hash;
             var content = hash.substring(1); // 去除第一个字符（即#）
             console.log(content);
