@@ -13,8 +13,22 @@
 2. ## 如果你是网页的浏览者，那么 _存在一定风险_
 ## 服务器无法决定你看到什么，因为服务器压根不知道
 ## 网页的安全性和可信度完全取决于提供者
+## 啊对，可以执行恶意代码
 # 所以咋么用
 ## 编写者将html代码加在网址https://tiebanluyu.github.io/txt2url/main.html#后
 ## 注意有一个#号
-## 举例 https://tiebanluyu.github.io/txt2url/main.html#<h1>1</h1><p>test</p>
+## 举例 
+
+## https://tiebanluyu.github.io/txt2url/main.html#<h1>1</h1><p>test/</p>
+
+## 但直接这样打支持性一般，连markdown都会出问题
+## 所以还提供了其他形式
+## 在main.html后再加上mode=h（html）
+## 就支持html代码（默认）
+## mode=b（base64）
+## 可以传入base64编码之后的结果
+## mode=t（test）
+## 可以输入文本（不是md），用“\n”表示换行
+## 可以这样
+## https://tiebanluyu.github.io/txt2url/main.html?mode=t#hello\nworld
 
