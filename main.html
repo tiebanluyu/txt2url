@@ -24,16 +24,23 @@
             content=unescape(content);
             if (mode=="b"){
                 content=atob(content)
-                $("p").after(content);
-                mode="h"//转成html后按html处理
+               
+                mode="h";//转成html后按html处理
             }
             if (mode=="h"){
                 $("p").after(content);//直接插入
             }
             
             if (mode=="t"){
-                content=content.replace("\\n","\n")
-                $("p").after(content);
+                let lines=content.split("\\n")
+                
+                for (let i = 0; i < lines.length; i++) {
+                    let element = lines[i];
+                    console.log(element);
+                    console.log(lines);
+
+                    $("p").before("<h3>"+element+"</h3>");
+                }                   
             }
 
             
