@@ -53,10 +53,12 @@
                 mode="h";//转成html后按html处理
             }
             if (mode=="h"){
+                content=unescape(content);
                 $("p").after(content);//直接插入
             }
             
             if (mode=="t"){
+                content=unescape(content);
                 let lines=content.split("\\n")
                 
                 for (let i = 0; i < lines.length; i++) {
