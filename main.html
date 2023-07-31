@@ -6,6 +6,30 @@
     <body>
         <p>test</p>
         <script>
+            //引用他人的中文解码方案，Base64
+            //版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+            //本文链接：https://blog.csdn.net/qq_45677671/article/details/131070535
+
+
+
+
+            const Base64 = {
+                encode(str) {
+                    // 首先，我们使用 encodeURIComponent 来获得百分比编码的UTF-8，然后我们将百分比编码转换为原始字节，最后存储到btoa里面
+                    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+                        function toSolidBytes(match, p1) {
+                            return String.fromCharCode(Number('0x' + p1));
+                    }));
+                },
+                decode(str) {
+                    // 过程：从字节流到百分比编码，再到原始字符串
+                    return decodeURIComponent(atob(str).split('').map(function (c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                }
+            }
+
+
             //$("p").after("<h5>123</h5>");
             $("p").hide();
             var mode=location.search;
@@ -23,7 +47,8 @@
             console.log(content);
             content=unescape(content);
             if (mode=="b"){
-                content=atob(content)
+                //content=atob(content)
+                content = Base64.decode(content); 
                
                 mode="h";//转成html后按html处理
             }
