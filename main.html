@@ -10,6 +10,10 @@
             $("p").hide();
             var mode=location.search;
             mode=mode[6];
+            if (mode==null){
+                mode="h"
+            }
+
             //b base64编码
             //h html编码
             //t 纯文本
@@ -18,7 +22,22 @@
             var content = hash.substring(1); // 去除第一个字符（即#）
             console.log(content);
             content=unescape(content);
-            $("p").after(content);
+            if (mode=="b"){
+                content=atob(content)
+                $("p").after(content);
+                mode="h"//转成html后按html处理
+            }
+            if (mode=="h"){
+                $("p").after(content);//直接插入
+            }
+            
+            if (mode=="t"){
+                content=content.replace("\\n","\n")
+                $("p").after(content);
+            }
+
+            
+            
         </script>
     </body>
 </html>
