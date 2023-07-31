@@ -32,3 +32,4 @@
 ## 可以这样
 ## https://tiebanluyu.github.io/txt2url/main.html?mode=t#hello\nworld
 
+## 由于js对中文不太友好，所以不对中文是否会乱码作任何保证
