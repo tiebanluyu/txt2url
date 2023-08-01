@@ -2,6 +2,7 @@
     <head>
         <title>txt2url</title>
         <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <meta charset="UTF-8">
     </head>
     <body>
         <p>test</p>
@@ -33,6 +34,7 @@
             //$("p").after("<h5>123</h5>");
             $("p").hide();
             var mode=location.search;
+
             mode=mode[6];
             if (mode==null){
                 mode="h"
@@ -41,11 +43,13 @@
             //b base64编码
             //h html编码
             //t 纯文本
-            console.log(mode);
+
             var hash = window.location.hash;
             var content = hash.substring(1); // 去除第一个字符（即#）
-            console.log(content);
-            content=unescape(content);
+            content=decodeURI(decodeURI(content));//这是url编码，要两次decode
+            
+            console.log("模式："+mode);
+            console.log("内容："+content);
             if (mode=="b"){
                 //content=atob(content)
                 content = Base64.decode(content); 
@@ -53,12 +57,12 @@
                 mode="h";//转成html后按html处理
             }
             if (mode=="h"){
-                content=unescape(content);
+                //content=encodeURI(content);
                 $("p").after(content);//直接插入
             }
             
             if (mode=="t"){
-                content=unescape(content);
+
                 let lines=content.split("\\n")
                 
                 for (let i = 0; i < lines.length; i++) {
