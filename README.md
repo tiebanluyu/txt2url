@@ -31,5 +31,7 @@
 ## 可以输入文本（不是md），用“\n”表示换行
 ## 可以这样
 ## https://tiebanluyu.github.io/txt2url/main.html?mode=t#hello\nworld
+## https://tiebanluyu.github.io/txt2url/main.html?mode=b#5ZCD5LqG5ZCX
 
 ## 由于js对中文不太友好，所以不对中文是否会乱码作任何保证
+## 但经过测试，问题不大
