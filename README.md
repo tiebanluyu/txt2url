@@ -31,7 +31,7 @@
 
 # 所以咋么用
 
-## 编写者将html代码加在网址<https://tiebanluyu.github.io/txt2url/main.html#后>
+## 编写者将html代码加在网址<https://tiebanluyu.github.io/txt2url/main.html#>之后
 
 ## 注意有一个#号
 
