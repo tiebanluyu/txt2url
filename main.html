@@ -5,15 +5,12 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <p>test</p>
+        <p style="display: none">loading</p>
         <script>
+
             //引用他人的中文解码方案，Base64
             //版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
             //本文链接：https://blog.csdn.net/qq_45677671/article/details/131070535
-
-
-
-
             const Base64 = {
                 encode(str) {
                     // 首先，我们使用 encodeURIComponent 来获得百分比编码的UTF-8，然后我们将百分比编码转换为原始字节，最后存储到btoa里面
@@ -31,16 +28,14 @@
             }
 
 
-            //$("p").after("<h5>123</h5>");
-            $("p").hide();
             var mode=location.search;
-
+             
             mode=mode[6];
             if (mode==null){
                 mode="h"
             }
 
-            //b base64编码
+            //b base64处理后的html编码
             //h html编码
             //t 纯文本
 
@@ -48,13 +43,15 @@
             var content = hash.substring(1); // 去除第一个字符（即#）
             content=decodeURI(decodeURI(content));//这是url编码，要两次decode
             if (content==""){
+                console.warn("跳转")
                 window.location.href="https://tiebanluyu.github.io/txt2url/main.html?mode=b#6L+Z5Liq6L2v5Lu25Y2B5YiG566A5piT77yM5L2G5Yqf6IO95Y+K5YW25by65aSnCuWKn+iDvQrojrflj5bkuoZ1cmznmoTnu5PlsL4j5ZCO6Z2i55qE5YaF5a65CuWwhuWFtuS7peS7o+eggeW9ouW8j+aJp+ihjArlhbzlrrnmgKcK5Zug5Li66L+Z5Liq6L2v5Lu255u05o6l5bCG6YKj5Lqb5YaF5a655Lyg5Yiw5bqV5bGC77yM5LiN55So6K+G5Yir5LqG5YaN5omn6KGM5a+55bqU55qE5Luj56CBCuaJgOS7pe+8jOWFvOWuueaAp+aegemrmAropoHmmK/miafooYzkuI3kuobvvIzogq/lrprmmK/kvaDnmoTmtY/op4jlmajlpKrlvLHkuoYK5a6J5YWo5oCnCuWmguaenOS9oOaYr+e9kemhteeahOe8luWGmeS6uuWRmO+8jOmCo+S5iCDnm7jlvZPlronlhagK77yD5Y+35ZCO6Z2i55qE5LiN5Lya6KKr5Lyg5Yiw5pyN5Yqh5Zmo77yM5L2g55yL5Yiw55qE5YaF5a655a6M5YWo5Zyo5L2g6Ieq5bex55qE55S16ISR5LiK77yM5rOE5a+G5LiN5Y+v6IO95Y+R55Sf5Zyo6L+Z5Liq546v6IqCCuWmguaenOS9oOaYr+e9kemhteeahOa1j+iniOiAhe+8jOmCo+S5iCDlrZjlnKjkuIDlrprpo47pmakK5pyN5Yqh5Zmo5peg5rOV5Yaz5a6a5L2g55yL5Yiw5LuA5LmI77yM5Zug5Li65pyN5Yqh5Zmo5Y6L5qC55LiN55+l6YGTCue9kemhteeahOWuieWFqOaAp+WSjOWPr+S/oeW6puWujOWFqOWPluWGs+S6juaPkOS+m+iAhQrllYrlr7nvvIzlj6/ku6XmiafooYzmgbbmhI/ku6PnoIEK5omA5Lul5ZKL5LmI55SoCue8luWGmeiAheWwhmh0bWzku6PnoIHliqDlnKjnvZHlnYBodHRwczovL3RpZWJhbmx1eXUuZ2l0aHViLmlvL3R4dDJ1cmwvbWFpbi5odG1sI+WQjgrms6jmhI/mnInkuIDkuKoj5Y+3CuS4vuS+iwpodHRwczovL3RpZWJhbmx1eXUuZ2l0aHViLmlvL3R4dDJ1cmwvbWFpbi5odG1sIzxkaXY+6L+Z5piv5LiA5LiqSFRNTOeahDxzcGFuPuekuuS+izwvc3Bhbj48L2Rpdj4K5L2G55u05o6l6L+Z5qC35omT5pSv5oyB5oCn5LiA6Iis77yM6L+ebWFya2Rvd27pg73opoHmipjohb7kuIDkuIsK5omA5Lul6L+Y5o+Q5L6b5LqG5YW25LuW5b2i5byPCuWcqG1haW4uaHRtbOWQjuWGjeWKoOS4im1vZGU9aO+8iGh0bWzvvIkK5bCx5pSv5oyBaHRtbOS7o+egge+8iOm7mOiupO+8iQptb2RlPWLvvIhiYXNlNjTvvIkK5Y+v5Lul5Lyg5YWlYmFzZTY057yW56CB5LmL5ZCO55qE57uT5p6cCm1vZGU9dO+8iHRlc3TvvIkK5Y+v5Lul6L6T5YWl5paH5pys77yI5LiN5pivbWTvvInvvIznlKjigJxcbuKAneihqOekuuaNouihjArlj6/ku6Xov5nmoLcKaHR0cHM6Ly90aWViYW5sdXl1LmdpdGh1Yi5pby90eHQydXJsL21haW4uaHRtbD9tb2RlPXQjaGVsbG9cbndvcmxkCmh0dHBzOi8vdGllYmFubHV5dS5naXRodWIuaW8vdHh0MnVybC9tYWluLmh0bWw/bW9kZT1iIzVaQ0Q1THFHNVpDWArnlLHkuo5qc+WvueS4reaWh+S4jeWkquWPi+Wlve+8jOaJgOS7peS4jeWvueS4reaWh+aYr+WQpuS8muS5seeggeS9nOS7u+S9leS/neivgQrkvYbnu4/ov4fmtYvor5XvvIzpl67popjkuI3lpKc="
             }
             //跳转帮助页面
             console.log("模式："+mode);
             console.log("内容："+content);
+
             if (mode=="b"){
-                //content=atob(content)
+                //content=atob(content) 不支持中文
                 content = Base64.decode(content); 
                
                 mode="h";//转成html后按html处理
